@@ -1,0 +1,26 @@
+[project]
+name = 'dicionarios'
+version = '0.0.0a1'
+description= 'A Dictionary request cli program.'
+license = 'MIT'
+
+author = {'name' = 'oJohnnyMarcello', 'email' = 'Bookman.Archive@gmail.com'}
+readme = {file = 'README.md', content-type = 'text/markdown'}
+requires-python = '>= 3.15'
+
+dependencies = [
+    'rich=<15.0.0',
+    'prompt_toolkit=3.0.53',
+    'deepl=1.33.0',
+    'requests=2.34.2'
+]
+
+keywords = ['dictionary', 'cli', 'portuguese']
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python"
+]
+
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
