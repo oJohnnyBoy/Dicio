@@ -1,5 +1,5 @@
 [project]
-name = 'dicionarios'
+name = 'dici-open'
 version = '0.0.0a1'
 description= 'A Dictionary request cli program.'
 license = 'MIT'
@@ -22,5 +22,5 @@ classifiers = [
 ]
 
 [build-system]
-requires = ["setuptools >= 77.0.3"]
+requires = ["setuptools >= 84.2.1"]
 build-backend = "setuptools.build_meta"
