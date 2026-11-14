@@ -51,7 +51,8 @@ def get_jisho_data(str):
         params={'keyword': str}
         )
 
-    rtext = format_jisho_r(r.json())    
+    rtext = format_jisho_r(r.json())
+    clear()
     console.print(Panel(rtext, title=project_name, subtitle='JISHO'))
 
 

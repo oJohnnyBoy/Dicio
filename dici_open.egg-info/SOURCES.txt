@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+dici/__init__.py
+dici/__main__.py
+dici/main.py
+dici_open.egg-info/PKG-INFO
+dici_open.egg-info/SOURCES.txt
+dici_open.egg-info/dependency_links.txt
+dici_open.egg-info/entry_points.txt
+dici_open.egg-info/requires.txt
+dici_open.egg-info/top_level.txt

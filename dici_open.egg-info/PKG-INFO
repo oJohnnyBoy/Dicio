@@ -1,0 +1,61 @@
+Metadata-Version: 2.4
+Name: dici-open
+Version: 0.0.0a1
+Summary: A dictionary request CLI program.
+Author-email: oJohnnyMarcello <Bookman.Archive@gmail.com>
+License-Expression: MIT
+Keywords: dictionary,cli,portuguese
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python
+Requires-Python: >=3.15
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: rich<15.0.0
+Requires-Dist: prompt_toolkit==3.0.53
+Requires-Dist: deepl==1.33.0
+Requires-Dist: requests==2.34.2
+Dynamic: license-file
+
+# Dici
+
+Dici is an alpha-stage command-line dictionary tool. It currently supports Jisho-based Japanese/English lookups from the terminal and provides a simple interactive menu for searching words.
+
+## Features
+
+- Interactive terminal UI with a menu-driven workflow
+- Jisho API lookups for Japanese and English definitions
+- Rich formatted output via `rich`
+
+## Requirements
+
+- Python 3.15 or later
+
+## Install
+
+From the project directory, install the package and its dependencies:
+
+```bash
+python -m pip install .
+```
+
+For local development, install in editable mode:
+
+```bash
+python -m pip install -e .
+```
+
+## Run
+
+After installation, launch the CLI with either of these commands:
+
+```bash
+python -m dici
+```
+
+or:
+
+```bash
+dici
+```
+
+The app opens an interactive menu where you can choose dictionary sources and search for words.
