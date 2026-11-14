@@ -1,6 +1,8 @@
 LICENSE
 README.md
 pyproject.toml
+setup.cfg
+setup.py
 dici/__init__.py
 dici/__main__.py
 dici/main.py

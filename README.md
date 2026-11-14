@@ -25,6 +25,13 @@ Other menu entries remain placeholders for future dictionary sources.
 - Python 3.15 or later
 - Internet access for dictionary API requests
 
+## Project layout
+
+```text
+src/dici/    Application package
+tests/       Unit tests
+```
+
 ## Install
 
 From the project directory, install the package and its dependencies:

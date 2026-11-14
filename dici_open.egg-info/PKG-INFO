@@ -1,34 +1,55 @@
 Metadata-Version: 2.4
 Name: dici-open
 Version: 0.0.0a1
-Summary: A dictionary request CLI program.
+Summary: A lightweight terminal dictionary tool for quick word lookups.
+Home-page: https://github.com/oJohnnyBoy/Dicio
+Author: oJohnnyMarcello
 Author-email: oJohnnyMarcello <Bookman.Archive@gmail.com>
 License-Expression: MIT
-Keywords: dictionary,cli,portuguese
+Project-URL: Homepage, https://github.com/oJohnnyBoy/Dicio
+Project-URL: Repository, https://github.com/oJohnnyBoy/Dicio
+Keywords: dictionary,cli,portuguese,jisho,terminal
 Classifier: Development Status :: 3 - Alpha
-Classifier: Programming Language :: Python
+Classifier: Environment :: Console
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.15
+Classifier: Topic :: Education
+Classifier: Topic :: Utilities
 Requires-Python: >=3.15
 Description-Content-Type: text/markdown
-License-File: LICENSE
 Requires-Dist: rich<15.0.0
 Requires-Dist: prompt_toolkit==3.0.53
-Requires-Dist: deepl==1.33.0
 Requires-Dist: requests==2.34.2
-Dynamic: license-file
+Dynamic: author
+Dynamic: home-page
+Dynamic: requires-python
 
 # Dici
 
-Dici is an alpha-stage command-line dictionary tool. It currently supports Jisho-based Japanese/English lookups from the terminal and provides a simple interactive menu for searching words.
+Dici is a lightweight terminal dictionary app built for quick lookups from the command line. The project is currently in alpha and focuses on fast Jisho-based word searches with a simple menu-driven interface.
 
 ## Features
 
-- Interactive terminal UI with a menu-driven workflow
-- Jisho API lookups for Japanese and English definitions
-- Rich formatted output via `rich`
+- Interactive terminal menu
+- Jisho API integration for Japanese and English definitions
+- Rich terminal formatting using `rich`
+- Simple dictionary workflow optimized for quick lookups
+
+## Current status
+
+At the moment, the main working flow is:
+
+1. Start the app
+2. Choose the Jisho option
+3. Enter a word to search
+4. View the formatted results in the terminal
+
+Other menu entries remain placeholders for future dictionary sources.
 
 ## Requirements
 
 - Python 3.15 or later
+- Internet access for dictionary API requests
 
 ## Install
 
@@ -38,7 +59,7 @@ From the project directory, install the package and its dependencies:
 python -m pip install .
 ```
 
-For local development, install in editable mode:
+For local development, install it in editable mode:
 
 ```bash
 python -m pip install -e .
@@ -46,7 +67,7 @@ python -m pip install -e .
 
 ## Run
 
-After installation, launch the CLI with either of these commands:
+After installation, start the CLI with either command:
 
 ```bash
 python -m dici
@@ -58,4 +79,39 @@ or:
 dici
 ```
 
-The app opens an interactive menu where you can choose dictionary sources and search for words.
+The app will display a menu like this:
+
+```text
+1. Jisho
+2. Eng
+3. PT-BR
+4. Exit
+```
+
+Choose `1` to search with Jisho, then enter a word.
+
+## Example usage
+
+```bash
+dici
+# choose 1
+# enter: hello
+```
+
+The tool will query the Jisho API and print matching definitions in the terminal.
+
+## Notes
+
+- This project is still evolving.
+- The Jisho integration is the primary implemented feature.
+- The English and PT-BR entries are not yet fully implemented.
+
+## Troubleshooting
+
+If the CLI does not start, verify that your environment is using the correct Python version and that the project was installed successfully:
+
+```bash
+python --version
+python -m pip install -e .
+python -m dici
+```

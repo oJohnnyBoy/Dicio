@@ -31,6 +31,12 @@ Repository = 'https://github.com/oJohnnyBoy/Dicio'
 [project.scripts]
 dici = 'dici.main:main'
 
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [build-system]
 requires = ['setuptools>=84.2.1']
 build-backend = 'setuptools.build_meta'
