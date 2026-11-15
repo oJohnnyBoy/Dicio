@@ -1,6 +1,6 @@
 import unittest
 
-from dici.main import format_entry
+from dici.jisho import format_entry
 
 
 class FormatEntryTests(unittest.TestCase):
@@ -20,6 +20,23 @@ class FormatEntryTests(unittest.TestCase):
         self.assertEqual(
             format_entry(entry),
             "猫 【ねこ】 (common, JLPT: N5)\n 1. cat; feline [Noun]",
+        )
+
+    def test_formats_entry_without_common_flag_as_uncommon(self):
+        entry = {
+            "japanese": [{"word": "猫", "reading": "ねこ"}],
+            "jlpt": [],
+            "senses": [
+                {
+                    "english_definitions": ["cat"],
+                    "parts_of_speech": ["Noun"],
+                }
+            ],
+        }
+
+        self.assertEqual(
+            format_entry(entry),
+            "猫 【ねこ】 (uncommon, JLPT: -)\n 1. cat [Noun]",
         )
 
 
