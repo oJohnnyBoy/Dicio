@@ -9,8 +9,8 @@ LONG_DESCRIPTION = (HERE / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="dici-open",
-    version="0.1.0a3",
-    description="A lightweight terminal dictionary tool for quick word lookups.",
+    version="0.1.0b1",
+    description="DICIO (Dici Open), a lightweight terminal dictionary.",
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     url="https://github.com/oJohnnyBoy/Dicio",
@@ -18,7 +18,7 @@ setup(
     author_email="Bookman.Archive@gmail.com",
     license="MIT",
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Environment :: Console",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.15",
@@ -36,7 +36,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "dici=dici.main:run",
+            "dicio=dici.main:run",
         ],
     },
     project_urls={

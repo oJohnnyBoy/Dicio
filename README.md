@@ -1,13 +1,15 @@
-# Dici
+# DICIO
 
-Dici is a lightweight terminal dictionary for quick Japanese and Brazilian
-Portuguese word lookups. The project is in alpha.
+DICIO stands for Dici Open. It is a lightweight terminal dictionary for quick
+Japanese, Brazilian Portuguese, and English word lookups. The project is in
+Beta (`0.1.0b1`).
 
 ## Features
 
 - Search Japanese words with Jisho, including readings, commonness, JLPT levels,
   and English definitions.
 - Search Brazilian Portuguese words with Dicionário Aberto.
+- Search English words with the Free Dictionary API.
 - Use an interactive menu or search directly from the command line.
 - Check the installed version and update to a release published on PyPI.
 - View formatted results in the terminal with Rich.
@@ -38,7 +40,7 @@ python -m pip install -e .
 Start the interactive menu with either command:
 
 ```bash
-dici
+dicio
 ```
 
 or:
@@ -47,8 +49,8 @@ or:
 python -m dici
 ```
 
-Choose `1` for Jisho, `2` for Brazilian Portuguese, or `4` to exit. The `3`
-English option is a placeholder.
+Choose `1` for Jisho, `2` for Brazilian Portuguese, `3` for English, or `4` to
+exit.
 
 ### Search from the command line
 
@@ -56,17 +58,18 @@ Pass a word to search directly. Jisho is used by default; select a dictionary
 with `--jisho` or `--ptbr`:
 
 ```bash
-dici cat
-dici --jisho hello
-dici --ptbr cavalo
+dicio cat
+dicio --jisho hello
+dicio --ptbr cavalo
+dicio --eng dictionary
 ```
 
 The same options work with `python -m dici` or `python -m dici.main`. The short
-flags `-jp` and `-ptbr` are also available. If no word is supplied, the app
-opens the interactive menu. To see all options:
+flags `-jp`, `-ptbr`, and `-en` are also available. If no word is supplied, the
+app opens the interactive menu. To see all options:
 
 ```bash
-dici --help
+dicio --help
 ```
 
 ### Version and updates
@@ -74,17 +77,17 @@ dici --help
 Show the installed version:
 
 ```bash
-dici --version
+dicio --version
 ```
 
 Check PyPI for the latest release and install it into the active Python
 environment:
 
 ```bash
-dici --update
+dicio --update
 ```
 
-Run `dici` again after the update to use the new version. Updating requires
+Run `dicio` again after the update to use the new version. Updating requires
 internet access and a published release on PyPI.
 
 ## Development

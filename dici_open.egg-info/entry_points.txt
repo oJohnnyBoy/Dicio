@@ -1,2 +1,2 @@
 [console_scripts]
-dici = dici.main:run
+dicio = dici.main:run

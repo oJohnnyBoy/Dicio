@@ -11,6 +11,7 @@ dici_open.egg-info/requires.txt
 dici_open.egg-info/top_level.txt
 src/dici/__init__.py
 src/dici/__main__.py
+src/dici/eng.py
 src/dici/jisho.py
 src/dici/main.py
 src/dici/ptbr.py

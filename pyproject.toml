@@ -1,7 +1,7 @@
 [project]
 name = 'dici-open'
-version = '0.1.0a3'
-description = 'A lightweight terminal dictionary tool for quick word lookups.'
+version = '0.1.0b1'
+description = 'DICIO (Dici Open), a lightweight terminal dictionary.'
 license = 'MIT'
 
 authors = [{name = 'oJohnnyMarcello', email = 'Bookman.Archive@gmail.com'}]
@@ -16,7 +16,7 @@ dependencies = [
 
 keywords = ['dictionary', 'cli', 'portuguese', 'jisho', 'terminal']
 classifiers = [
-  'Development Status :: 3 - Alpha',
+  'Development Status :: 4 - Beta',
   'Environment :: Console',
   'Programming Language :: Python :: 3',
   'Programming Language :: Python :: 3.15',
@@ -29,7 +29,7 @@ Homepage = 'https://github.com/oJohnnyBoy/Dicio'
 Repository = 'https://github.com/oJohnnyBoy/Dicio'
 
 [project.scripts]
-dici = 'dici.main:run'
+dicio = 'dici.main:run'
 
 [tool.setuptools]
 package-dir = {"" = "src"}

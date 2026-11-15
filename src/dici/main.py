@@ -6,17 +6,18 @@ from prompt_toolkit.shortcuts import clear
 from rich.console import Console
 from rich.panel import Panel
 
-from dici import jisho, ptbr
+from dici import eng, jisho, ptbr
 
-project_name = 'DICIOPEN'
+project_name = 'DICIO'
 console = Console()
 
 # Map menu keys and command-line flags to display names and lookup functions.
 DICTIONARIES = {
     'jisho': ('JAPANESE DICTIONARY', jisho.get_jisho_data),
     'ptbr':  ('BRAZILIAN PORTUGUESE DICTIONARY', ptbr.get_data),
+    'eng': ('ENGLISH DICTIONARY', eng.get_data)
 }
-MENU = {'1': 'jisho', '2': 'ptbr'}
+MENU = {'1': 'jisho', '2': 'ptbr', '3': 'eng'}
 
 import subprocess
 import sys
@@ -24,7 +25,7 @@ from importlib.metadata import version, PackageNotFoundError
 
 import requests
 
-PACKAGE = 'dici-open'   # the distribution name in pyproject.toml, not the folder name
+PACKAGE = 'dici-open'  # The distribution name, not the import package.
 
 
 def current_version():
@@ -60,7 +61,7 @@ def update():
         [sys.executable, '-m', 'pip', 'install', '--upgrade', '--pre', PACKAGE]
     )
     if result.returncode == 0:
-        console.print('[green]Updated! Run dici again to use the new version.[/green]')
+        console.print('[green]Updated! Run dicio again to use the new version.[/green]')
     else:
         console.print('[red]Update failed. See the pip output above.[/red]')
 
@@ -84,9 +85,6 @@ def main():
         console.print(Panel('[green bold]See you later![/green bold] \n '
                             '[red bold]Thank you :smile::heart:[/red bold]'))
         return
-    if choose == '3':
-        console.print(Panel('[yellow]ENG dictionary not implemented yet.[/yellow]'))
-        return
     if choose not in MENU:
         console.print(Panel('[bold red]:x: This option is unavailable, try again later.'))
         return
@@ -101,8 +99,8 @@ def main():
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        prog='dici',
-        description='Dictionary lookup: Jisho (JP) and Dicionário Aberto (PT-BR).',
+        prog='dicio',
+        description='Dictionary lookup: Jisho (JP), Dicionário Aberto (PT-BR) and Free Dictionary API (ENG).',
     )
     parser.add_argument('word', nargs='*',
                         help='word to search for (empty = open the menu)')
@@ -119,6 +117,9 @@ def parse_args():
     group.add_argument('-ptbr', '--ptbr', dest='dict_key',
                        action='store_const', const='ptbr',
                        help='search in the Portuguese dictionary')
+    group.add_argument('-en', '--eng', dest='dict_key', 
+                       action='store_const', const='eng',
+                       help='search in the English dictionary')
 
     args = parser.parse_args()
     args.word = ' '.join(args.word)
