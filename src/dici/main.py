@@ -75,11 +75,12 @@ def parse_args():
     args.word = ' '.join(args.word)
     return args
 
-
-if __name__ == '__main__':
+def run():
     args = parse_args()
-
     if args.word:
         lookup(args.dict_key or 'jisho', args.word)
     else:
         main()
+
+if __name__ == '__main__':
+   run()
