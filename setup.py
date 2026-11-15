@@ -9,7 +9,7 @@ LONG_DESCRIPTION = (HERE / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="dici-open",
-    version="0.1.0a2",
+    version="0.1.0a3",
     description="A lightweight terminal dictionary tool for quick word lookups.",
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
