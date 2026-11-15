@@ -18,7 +18,7 @@ Classifier: Topic :: Utilities
 Requires-Python: >=3.15
 Description-Content-Type: text/markdown
 License-File: LICENSE.txt
-Requires-Dist: rich<15.0.0
+Requires-Dist: rich==15.0.0
 Requires-Dist: prompt_toolkit==3.0.53
 Requires-Dist: requests==2.34.2
 Dynamic: author
@@ -37,6 +37,7 @@ Portuguese word lookups. The project is in alpha.
   and English definitions.
 - Search Brazilian Portuguese words with Dicionário Aberto.
 - Use an interactive menu or search directly from the command line.
+- Check the installed version and update to a release published on PyPI.
 - View formatted results in the terminal with Rich.
 
 The English dictionary menu option is not implemented yet.
@@ -95,6 +96,24 @@ opens the interactive menu. To see all options:
 ```bash
 dici --help
 ```
+
+### Version and updates
+
+Show the installed version:
+
+```bash
+dici --version
+```
+
+Check PyPI for the latest release and install it into the active Python
+environment:
+
+```bash
+dici --update
+```
+
+Run `dici` again after the update to use the new version. Updating requires
+internet access and a published release on PyPI.
 
 ## Development
 

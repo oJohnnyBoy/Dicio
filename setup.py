@@ -30,7 +30,7 @@ setup(
     packages=find_packages(where="src"),
     python_requires=">=3.15",
     install_requires=[
-        "rich<15.0.0",
+        "rich==15.0.0",
         "prompt_toolkit==3.0.53",
         "requests==2.34.2",
     ],
