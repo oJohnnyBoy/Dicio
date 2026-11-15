@@ -1,6 +1,18 @@
 import unittest
+from unittest.mock import Mock, patch
 
+from dici import main as main_module
 from dici.jisho import format_entry
+
+
+class DictionarySelectionTests(unittest.TestCase):
+    def test_ptbr_lookup_receives_the_entered_word(self):
+        get_data = Mock()
+        dictionaries = {"ptbr": ("BRAZILIAN PORTUGUESE DICTIONARY", get_data)}
+        with patch.object(main_module, "DICTIONARIES", dictionaries):
+            main_module.lookup("ptbr", "casa")
+
+        get_data.assert_called_once_with("casa", main_module.project_name)
 
 
 class FormatEntryTests(unittest.TestCase):

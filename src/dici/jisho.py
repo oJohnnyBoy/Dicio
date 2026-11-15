@@ -2,39 +2,40 @@ import requests
 from rich import print
 from rich.panel import Panel
 from rich.console import Console
-
-from dici import jisho
-from dici import main
+from prompt_toolkit.shortcuts import clear
 
 
 console = Console()
 
-jisho_url = 'http://beta.jisho.org/api/v1/search/words'
+url = 'http://beta.jisho.org/api/v1/search/words'
+
 
 def get_jisho_data(str, project_name):
+    # Jisho accepts the search term as the "keyword" query parameter.
     r = requests.get(
-        jisho_url,
+        url,
         params={'keyword': str}
         )
 
+    # Format the API response, clear the previous screen, and show the results.
     rtext = format_jisho_r(r.json())
-    main.clear()
+    clear()
     console.print(Panel(rtext, title=project_name, subtitle='JISHO'))
 
 
-def format_entry(entry): # Gets the main word and reading and format its entries for japanese dictionary.
-    # Main reading and word, corresponding to the first item in 'japanese'.
+def format_entry(entry):
+    # Use the first Japanese form as the displayed word and reading.
     main = entry['japanese'][0]
     word = main.get('word', '')
     reading = main.get('reading', '')
 
-    # extra info
+    # Add commonness and JLPT level, using fallbacks when they are unavailable.
     common = 'common' if entry.get('is_common', False) else 'uncommon'
     jlpt = ', '.join(entry['jlpt']).upper().replace('JLPT-','') or '-'
 
     lines = [f'{word} 【{reading}】 ({common}, JLPT: {jlpt})']
 
-    # definitions
+    # Format each sense with its English meanings and parts of speech.
     for i, sense in enumerate(entry['senses'], start=1):
         meanings = '; '.join(sense['english_definitions'])
         pos = ', '.join(sense['parts_of_speech'])
@@ -42,9 +43,12 @@ def format_entry(entry): # Gets the main word and reading and format its entries
 
     return '\n'.join(lines)
 
+
 def format_jisho_r(respon):
+    # Stop if the API reports a failed search response.
     if respon['meta']['status'] != 200:
         return 'Error: Request failed.'
     
+    # Format all matching entries, with a blank line between them.
     entries = respon['data']
     return '\n\n'.join(format_entry(e) for e in entries)
