@@ -29,7 +29,7 @@ Homepage = 'https://github.com/oJohnnyBoy/Dicio'
 Repository = 'https://github.com/oJohnnyBoy/Dicio'
 
 [project.scripts]
-dici = 'dici.main:main'
+dici = 'dici.main:run'
 
 [tool.setuptools]
 package-dir = {"" = "src"}

@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: dici-open
-Version: 0.0.0a1
+Version: 0.1.0a2
 Summary: A lightweight terminal dictionary tool for quick word lookups.
 Home-page: https://github.com/oJohnnyBoy/Dicio
 Author: oJohnnyMarcello
@@ -17,43 +17,38 @@ Classifier: Topic :: Education
 Classifier: Topic :: Utilities
 Requires-Python: >=3.15
 Description-Content-Type: text/markdown
+License-File: LICENSE.txt
 Requires-Dist: rich<15.0.0
 Requires-Dist: prompt_toolkit==3.0.53
 Requires-Dist: requests==2.34.2
 Dynamic: author
 Dynamic: home-page
+Dynamic: license-file
 Dynamic: requires-python
 
 # Dici
 
-Dici is a lightweight terminal dictionary app built for quick lookups from the command line. The project is currently in alpha and focuses on fast Jisho-based word searches with a simple menu-driven interface.
+Dici is a lightweight terminal dictionary for quick Japanese and Brazilian
+Portuguese word lookups. The project is in alpha.
 
 ## Features
 
-- Interactive terminal menu
-- Jisho API integration for Japanese and English definitions
-- Rich terminal formatting using `rich`
-- Simple dictionary workflow optimized for quick lookups
+- Search Japanese words with Jisho, including readings, commonness, JLPT levels,
+  and English definitions.
+- Search Brazilian Portuguese words with Dicionário Aberto.
+- Use an interactive menu or search directly from the command line.
+- View formatted results in the terminal with Rich.
 
-## Current status
-
-At the moment, the main working flow is:
-
-1. Start the app
-2. Choose the Jisho option
-3. Enter a word to search
-4. View the formatted results in the terminal
-
-Other menu entries remain placeholders for future dictionary sources.
+The English dictionary menu option is not implemented yet.
 
 ## Requirements
 
 - Python 3.15 or later
 - Internet access for dictionary API requests
 
-## Install
+## Installation
 
-From the project directory, install the package and its dependencies:
+Install the package and its dependencies:
 
 ```bash
 python -m pip install .
@@ -65,53 +60,46 @@ For local development, install it in editable mode:
 python -m pip install -e .
 ```
 
-## Run
+## Usage
 
-After installation, start the CLI with either command:
+Start the interactive menu with either command:
 
 ```bash
-python -m dici
+dici
 ```
 
 or:
 
 ```bash
-dici
-```
-
-The app will display a menu like this:
-
-```text
-1. Jisho
-2. Eng
-3. PT-BR
-4. Exit
-```
-
-Choose `1` to search with Jisho, then enter a word.
-
-## Example usage
-
-```bash
-dici
-# choose 1
-# enter: hello
-```
-
-The tool will query the Jisho API and print matching definitions in the terminal.
-
-## Notes
-
-- This project is still evolving.
-- The Jisho integration is the primary implemented feature.
-- The English and PT-BR entries are not yet fully implemented.
-
-## Troubleshooting
-
-If the CLI does not start, verify that your environment is using the correct Python version and that the project was installed successfully:
-
-```bash
-python --version
-python -m pip install -e .
 python -m dici
+```
+
+Choose `1` for Jisho, `2` for Brazilian Portuguese, or `4` to exit. The `3`
+English option is a placeholder.
+
+### Search from the command line
+
+Pass a word to search directly. Jisho is used by default; select a dictionary
+with `--jisho` or `--ptbr`:
+
+```bash
+dici cat
+dici --jisho hello
+dici --ptbr cavalo
+```
+
+The same options work with `python -m dici` or `python -m dici.main`. The short
+flags `-jp` and `-ptbr` are also available. If no word is supplied, the app
+opens the interactive menu. To see all options:
+
+```bash
+dici --help
+```
+
+## Development
+
+Run the test suite from the project directory:
+
+```bash
+python -m unittest discover -s tests -v
 ```

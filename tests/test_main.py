@@ -15,6 +15,19 @@ class DictionarySelectionTests(unittest.TestCase):
         get_data.assert_called_once_with("casa", main_module.project_name)
 
 
+class CommandLineTests(unittest.TestCase):
+    def test_command_line_arguments_dispatch_a_direct_lookup(self):
+        with (
+            patch("sys.argv", ["dici", "--ptbr", "casa", "verde"]),
+            patch.object(main_module, "lookup") as lookup,
+            patch.object(main_module, "main") as interactive_menu,
+        ):
+            main_module.run()
+
+        lookup.assert_called_once_with("ptbr", "casa verde")
+        interactive_menu.assert_not_called()
+
+
 class FormatEntryTests(unittest.TestCase):
     def test_formats_word_reading_and_meanings(self):
         entry = {

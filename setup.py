@@ -36,7 +36,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "dici=dici.main:main",
+            "dici=dici.main:run",
         ],
     },
     project_urls={

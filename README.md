@@ -9,6 +9,7 @@ Portuguese word lookups. The project is in alpha.
   and English definitions.
 - Search Brazilian Portuguese words with Dicionário Aberto.
 - Use an interactive menu or search directly from the command line.
+- Check the installed version and update to a release published on PyPI.
 - View formatted results in the terminal with Rich.
 
 The English dictionary menu option is not implemented yet.
@@ -51,20 +52,40 @@ English option is a placeholder.
 
 ### Search from the command line
 
-Use `python -m dici.main` to search directly. If no dictionary option is
-provided, Jisho is used by default:
+Pass a word to search directly. Jisho is used by default; select a dictionary
+with `--jisho` or `--ptbr`:
 
 ```bash
-python -m dici.main cat
-python -m dici.main --jisho hello
-python -m dici.main --ptbr cavalo
+dici cat
+dici --jisho hello
+dici --ptbr cavalo
 ```
 
-The short options `-jp` and `-ptbr` are also available. To see all options:
+The same options work with `python -m dici` or `python -m dici.main`. The short
+flags `-jp` and `-ptbr` are also available. If no word is supplied, the app
+opens the interactive menu. To see all options:
 
 ```bash
-python -m dici.main --help
+dici --help
 ```
+
+### Version and updates
+
+Show the installed version:
+
+```bash
+dici --version
+```
+
+Check PyPI for the latest release and install it into the active Python
+environment:
+
+```bash
+dici --update
+```
+
+Run `dici` again after the update to use the new version. Updating requires
+internet access and a published release on PyPI.
 
 ## Development
 

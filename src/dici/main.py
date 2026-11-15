@@ -18,6 +18,51 @@ DICTIONARIES = {
 }
 MENU = {'1': 'jisho', '2': 'ptbr'}
 
+import subprocess
+import sys
+from importlib.metadata import version, PackageNotFoundError
+
+import requests
+
+PACKAGE = 'dici-open'   # the distribution name in pyproject.toml, not the folder name
+
+
+def current_version():
+    try:
+        return version(PACKAGE)
+    except PackageNotFoundError:
+        return 'unknown'
+
+
+def latest_version():
+    # Ask PyPI for the newest release. Returns None if it can't be reached.
+    try:
+        r = requests.get(f'https://pypi.org/pypi/{PACKAGE}/json', timeout=5)
+        r.raise_for_status()
+        return r.json()['info']['version']
+    except (requests.RequestException, KeyError):
+        return None
+
+
+def update():
+    current = current_version()
+    latest = latest_version()
+
+    if latest is None:
+        console.print('[red]Could not check for updates (PyPI unreachable or package not published).[/red]')
+        return
+    if latest == current:
+        console.print(f'[green]Already up to date ({current}).[/green]')
+        return
+
+    console.print(f'Updating [bold]{current}[/bold] -> [bold]{latest}[/bold]...')
+    result = subprocess.run(
+        [sys.executable, '-m', 'pip', 'install', '--upgrade', '--pre', PACKAGE]
+    )
+    if result.returncode == 0:
+        console.print('[green]Updated! Run dici again to use the new version.[/green]')
+    else:
+        console.print('[red]Update failed. See the pip output above.[/red]')
 
 def lookup(dict_key, word):
     # Look up the word using the selected dictionary.
@@ -61,6 +106,10 @@ def parse_args():
     )
     parser.add_argument('word', nargs='*',
                         help='word to search for (empty = open the menu)')
+    parser.add_argument('-u', '--update', action='store_true',
+                    help='check for a new version and update')
+    parser.add_argument('-v', '--version', action='version',
+                    version=f'%(prog)s {current_version()}')
 
     # Allow at most one dictionary option to be selected.
     group = parser.add_mutually_exclusive_group()
@@ -77,10 +126,15 @@ def parse_args():
 
 def run():
     args = parse_args()
+
+    if args.update:
+        update()
+        return
+
     if args.word:
         lookup(args.dict_key or 'jisho', args.word)
     else:
         main()
 
 if __name__ == '__main__':
-   run()
+    run()
