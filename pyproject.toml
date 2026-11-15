@@ -1,6 +1,6 @@
 [project]
 name = 'dici-open'
-version = '0.0.0a1'
+version = '0.1.0a2'
 description = 'A lightweight terminal dictionary tool for quick word lookups.'
 license = 'MIT'
 

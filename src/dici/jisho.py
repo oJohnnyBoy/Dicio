@@ -1,14 +1,17 @@
+import os
+
 import requests
 from rich import print
 from rich.panel import Panel
 from rich.console import Console
-from prompt_toolkit.shortcuts import clear
 
 
 console = Console()
 
 url = 'http://beta.jisho.org/api/v1/search/words'
 
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def get_jisho_data(str, project_name):
     # Jisho accepts the search term as the "keyword" query parameter.

@@ -1,40 +1,26 @@
 # Dici
 
-Dici is a lightweight terminal dictionary app built for quick lookups from the command line. The project is currently in alpha and focuses on fast Jisho-based word searches with a simple menu-driven interface.
+Dici is a lightweight terminal dictionary for quick Japanese and Brazilian
+Portuguese word lookups. The project is in alpha.
 
 ## Features
 
-- Interactive terminal menu
-- Jisho API integration for Japanese and English definitions
-- Rich terminal formatting using `rich`
-- Simple dictionary workflow optimized for quick lookups
+- Search Japanese words with Jisho, including readings, commonness, JLPT levels,
+  and English definitions.
+- Search Brazilian Portuguese words with Dicionário Aberto.
+- Use an interactive menu or search directly from the command line.
+- View formatted results in the terminal with Rich.
 
-## Current status
-
-At the moment, the main working flow is:
-
-1. Start the app
-2. Choose the Jisho option
-3. Enter a word to search
-4. View the formatted results in the terminal
-
-Other menu entries remain placeholders for future dictionary sources.
+The English dictionary menu option is not implemented yet.
 
 ## Requirements
 
 - Python 3.15 or later
 - Internet access for dictionary API requests
 
-## Project layout
+## Installation
 
-```text
-src/dici/    Application package
-tests/       Unit tests
-```
-
-## Install
-
-From the project directory, install the package and its dependencies:
+Install the package and its dependencies:
 
 ```bash
 python -m pip install .
@@ -46,53 +32,44 @@ For local development, install it in editable mode:
 python -m pip install -e .
 ```
 
-## Run
+## Usage
 
-After installation, start the CLI with either command:
+Start the interactive menu with either command:
 
 ```bash
-python -m dici
+dici
 ```
 
 or:
 
 ```bash
-dici
-```
-
-The app will display a menu like this:
-
-```text
-1. Jisho
-2. Eng
-3. PT-BR
-4. Exit
-```
-
-Choose `1` to search with Jisho, then enter a word.
-
-## Example usage
-
-```bash
-dici
-# choose 1
-# enter: hello
-```
-
-The tool will query the Jisho API and print matching definitions in the terminal.
-
-## Notes
-
-- This project is still evolving.
-- The Jisho integration is the primary implemented feature.
-- The English and PT-BR entries are not yet fully implemented.
-
-## Troubleshooting
-
-If the CLI does not start, verify that your environment is using the correct Python version and that the project was installed successfully:
-
-```bash
-python --version
-python -m pip install -e .
 python -m dici
+```
+
+Choose `1` for Jisho, `2` for Brazilian Portuguese, or `4` to exit. The `3`
+English option is a placeholder.
+
+### Search from the command line
+
+Use `python -m dici.main` to search directly. If no dictionary option is
+provided, Jisho is used by default:
+
+```bash
+python -m dici.main cat
+python -m dici.main --jisho hello
+python -m dici.main --ptbr cavalo
+```
+
+The short options `-jp` and `-ptbr` are also available. To see all options:
+
+```bash
+python -m dici.main --help
+```
+
+## Development
+
+Run the test suite from the project directory:
+
+```bash
+python -m unittest discover -s tests -v
 ```

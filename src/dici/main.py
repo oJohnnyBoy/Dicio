@@ -1,4 +1,4 @@
-#| libraries
+# Imports
 import argparse
 import os
 
@@ -11,7 +11,7 @@ from dici import jisho, ptbr
 project_name = 'DICIOPEN'
 console = Console()
 
-# Mapa: opção do menu / flag -> (nome exibido, função de busca)
+# Map menu keys and command-line flags to display names and lookup functions.
 DICTIONARIES = {
     'jisho': ('JAPANESE DICTIONARY', jisho.get_jisho_data),
     'ptbr':  ('BRAZILIAN PORTUGUESE DICTIONARY', ptbr.get_data),
@@ -20,13 +20,13 @@ MENU = {'1': 'jisho', '2': 'ptbr'}
 
 
 def lookup(dict_key, word):
-    # Busca a palavra no dicionário escolhido.
+    # Look up the word using the selected dictionary.
     dic_name, search = DICTIONARIES[dict_key]
     search(word, project_name)
 
 
 def main():
-    # Menu interativo.
+    # Display the interactive menu and handle the user's selection.
     console.print(Panel(
         f'[red bold italic]WELCOME TO {project_name}[/red bold italic]\n \n'
         'What do [red bold]you[/red bold] want to do? \n'
@@ -62,7 +62,7 @@ def parse_args():
     parser.add_argument('word', nargs='*',
                         help='word to search for (empty = open the menu)')
 
-    # Só um dos dois pode ser usado por vez.
+    # Allow at most one dictionary option to be selected.
     group = parser.add_mutually_exclusive_group()
     group.add_argument('-jp', '--jisho', dest='dict_key',
                        action='store_const', const='jisho',
